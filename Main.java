@@ -8,7 +8,7 @@ public class Main {
         String password = "Kash@17022005";
 
 
-        String query = "select * from employee;";
+        String query = "select * from employee where ID = 1 ;";
 
         try{
             Class.forName("com.mysql.jdbc.Driver");
