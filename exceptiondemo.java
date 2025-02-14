@@ -9,7 +9,7 @@ public class exceptiondemo {
         int res =  (dividend/divisor);
         System.out.println("result = "+ res);
         }
-        catch(ArithmeticException e){
+        catch(Exception e){
             System.out.println(e.getMessage());
         }
     }
