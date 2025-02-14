@@ -7,6 +7,9 @@ public class Main {
         String username = "root";
         String password = "Kash@17022005";
 
+
+        String query = "select * from employee;";
+
         try{
             Class.forName("com.mysql.jdbc.Driver");
             System.out.println("✅ Driver loaded successfully!!");
@@ -20,6 +23,21 @@ public class Main {
 
             Connection con = DriverManager.getConnection(url,username,password);
             System.out.println("✅ Connection successfull");
+            Statement stmt = con.createStatement();
+
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                int id = rs.getInt("ID");
+                String name = rs.getString("name");
+                String job_title = rs.getString("job_title");
+                Double salary = rs.getDouble("salary");
+            }
+
+            System.out.println(id);
+            System.out.println(name);
+            System.out.println(job_title);
+            System.out.println(salary));
+
         }catch(SQLException e){
             System.out.println(e.getMessage());
         }
