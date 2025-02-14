@@ -31,12 +31,13 @@ public class Main {
                 String name = rs.getString("name");
                 String job_title = rs.getString("job_title");
                 Double salary = rs.getDouble("salary");
-            }
-
             System.out.println(id);
             System.out.println(name);
             System.out.println(job_title);
-            System.out.println(salary));
+            System.out.println(salary);
+            }
+
+            
 
         }catch(SQLException e){
             System.out.println(e.getMessage());
