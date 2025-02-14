@@ -1,28 +1,27 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*; // it has all connection related drivers and driver manager
 
 public class Main {
-    public static void main(String[] args) {
-        // MySQL connection details
-        String url = "jdbc:mysql://localhost:3306/JDBC"; // Change testdb if needed
-        String user = "root"; // Change to your MySQL username
-        String password = "Kash@17022005"; // Enter your MySQL password
+    public static void main(String[] args) throws ClassNotFoundException {
 
-        try {
-            // Connect to MySQL
-            Connection conn = DriverManager.getConnection(url, user, password);
-            System.out.println("✅ Connected to MySQL!");
+        String url= "jdbc:mysql://127.0.0.1:3306/JDBC";
+        String username = "root";
+        String password = "Kash@17022005";
 
-            // Close the connection
-            conn.close();
-            System.out.println("✅ Connection closed.");
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            System.out.println("✅ Driver loaded successfully!!");
+        }
+        catch(ClassNotFoundException e){ 
+            System.out.println(e.getMessage());
+        }
 
-        } catch (SQLException e) {
-            System.out.println("❌ Connection failed!");
-            e.printStackTrace();
+
+        try{
+
+            Connection con = DriverManager.getConnection(url,username,password);
+            System.out.println("✅ Connection successfull");
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
         }
     }
 }
