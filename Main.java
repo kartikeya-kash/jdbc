@@ -8,8 +8,9 @@ public class Main {
         String password = "Kash@17022005";
 
 
-        String query = "insert into employee (ID,name,job_title,salary) values \n" + //
-                        "(3,\"Anjul\",\"Bse\",100000);";
+        String query = "update employee \n" + //
+                        "set name = \"Kartikeya Sharma\" , salary = 120000\n" + //
+                        "where ID = 2;";
 
         try{
             Class.forName("com.mysql.jdbc.Driver");
@@ -27,14 +28,15 @@ public class Main {
             Statement stmt = con.createStatement();
 
 
-            int rowsaffected = stmt.executeUpdate(query);
+             int rowsaffected = stmt.executeUpdate(query);
             if(rowsaffected>0){
-                System.out.println("Insertion completed "+rowsaffected + " rows affected");
+                System.out.println("Updation completed "+rowsaffected + " rows affected");
             }else{
-                System.out.println("Insertion failed");
-            }
+                System.out.println("Updation failed");
+            } 
 
                 // To display data 
+
            /*  ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 int id = rs.getInt("ID");
