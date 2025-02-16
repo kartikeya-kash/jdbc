@@ -8,7 +8,7 @@ public class Main {
         String password = "Kash@17022005";
 
 
-        String query = "Select * from employee where name = ? ";
+        String query = "Insert into employee(ID,name,job_title,salary) values (?,?,?,?); ";
 
         try{
             Class.forName("com.mysql.jdbc.Driver");
@@ -26,13 +26,15 @@ public class Main {
             // Statement stmt = con.createStatement();
 
             PreparedStatement ps = con.prepareStatement(query);
-            ps.setString(1, "Anjul");
-            ResultSet resultSet = ps.executeQuery();
-            while (resultSet.next()) {
-                int id = resultSet.getInt("ID");
-                System.out.println(id);
-                
-            }
+            ps.setInt(1,423);
+            ps.setString(2, "hemant");
+            ps.setString(3, "asdf");
+            ps.setDouble(4, 234.34);
+
+
+            
+       int rowsaffected =  ps.executeUpdate();
+       System.out.println(rowsaffected);
 
             /*  int rowsaffected = stmt.executeUpdate(query);
             if(rowsaffected>0){
