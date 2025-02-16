@@ -8,9 +8,7 @@ public class Main {
         String password = "Kash@17022005";
 
 
-        String query = "update employee \n" + //
-                        "set name = \"Kartikeya Sharma\" , salary = 120000\n" + //
-                        "where ID = 2;";
+        String query = "Select * from employee where name = ? ";
 
         try{
             Class.forName("com.mysql.jdbc.Driver");
@@ -25,15 +23,23 @@ public class Main {
 
             Connection con = DriverManager.getConnection(url,username,password);
             System.out.println("✅ Connection successfull");
-            Statement stmt = con.createStatement();
+            // Statement stmt = con.createStatement();
 
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, "Anjul");
+            ResultSet resultSet = ps.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("ID");
+                System.out.println(id);
+                
+            }
 
-             int rowsaffected = stmt.executeUpdate(query);
+            /*  int rowsaffected = stmt.executeUpdate(query);
             if(rowsaffected>0){
                 System.out.println("Updation completed "+rowsaffected + " rows affected");
             }else{
                 System.out.println("Updation failed");
-            } 
+            } */
 
                 // To display data 
 
